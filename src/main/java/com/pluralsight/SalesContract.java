@@ -1,6 +1,6 @@
 package com.pluralsight;
 
-public class SalesContract {
+public class SalesContract extends Contract {
     private double salesTax = .5;
     private double recordingFee = 100;
     private double processingFee;
@@ -9,7 +9,8 @@ public class SalesContract {
     private double totalPrice;
     private double monthlyPayment;
 
-    public SalesContract(boolean isFinance) {
+    public SalesContract(String date, String customerName, String customerEmail, Vehicle vehicleSold, boolean isFinance) {
+        super(date, customerName, customerEmail, vehicleSold);
         this.isFinance = isFinance;
     }
 
@@ -45,13 +46,21 @@ public class SalesContract {
         isFinance = finance;
     }
 
-    public double getTotalPrice(){
+    public double getTotalPrice() {
 
 
     }
 
-    public double getMonthlyPayment(){
+    public double getMonthlyPayment() {
 
 
+    }
+
+    @Override
+    public String toString() {
+        return "SALE|" + getDate() + "|" + getCustomerName() + "|" + getCustomerEmail() + "|" + getVehicleSold().getVin() + "|" + getVehicleSold().getYear() + "|" +
+                getVehicleSold().getMake() + "|" + getVehicleSold().getModel() + "|" + getVehicleSold().getVehicleType() + "|" + getVehicleSold().getColor() + "|" +
+                getVehicleSold().getOdometer() + "|" + getVehicleSold().getPrice() + "|" + salesTax + "|" + recordingFee + "|" + processingFee + "|" + totalPrice + "|" +
+                isFinance + "|" + monthlyPayment;
     }
 }

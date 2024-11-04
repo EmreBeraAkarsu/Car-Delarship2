@@ -26,6 +26,7 @@ public class UserInterface {
             System.out.println("7. Get all vehicles");
             System.out.println("8. Add vehicle");
             System.out.println("9. Remove vehicle");
+            System.out.println("10. Enter a New Contract");
             System.out.println("99. Quit");
 
             System.out.print("Enter your choice: ");
@@ -59,6 +60,9 @@ public class UserInterface {
                 case "9":
                     processRemoveVehicleRequest();
                     break;
+                case "10":
+                    processANewContract();
+                    break;
                 case "99":
                     quit = true;
                     break;
@@ -68,6 +72,81 @@ public class UserInterface {
         }
     }
 
+    public void processANewContract(){
+
+        System.out.println("Enter SALE for sale, LEASE for lease");
+        String saleOrLease = scanner.nextLine();
+
+        if (saleOrLease.equalsIgnoreCase("sale")){
+            processANewSale();
+        }else if (saleOrLease.equalsIgnoreCase("lease")){
+            processANewLease();
+        }else {
+            System.out.println("Incorrect input!");
+        }
+    }
+
+    public void processANewSale(){
+        System.out.println("Enter Date: ");
+        String date = scanner.nextLine();
+
+        System.out.println("Enter Customer Name: ");
+        String name = scanner.nextLine();
+
+        System.out.println("Enter Customer Email: ");
+        String email = scanner.nextLine();
+
+        System.out.println("Enter Vehicle Vin: ");
+        int vin = scanner.nextInt();
+
+        Vehicle vehicle = dealership.getVehicleByVin(vin);
+
+
+        System.out.println("Enter If It is Financed(yes/no): ");
+        String isFinanceOption = scanner.nextLine();
+
+        boolean isFinanced;
+
+        if (isFinanceOption.equalsIgnoreCase("yes")){
+            isFinanced = true;
+        } else if (isFinanceOption.equalsIgnoreCase("no")) {
+            isFinanced = false;
+        }else {
+            System.out.println("Incorrect finance option selected!");
+            return;
+        }
+
+        SalesContract salesContract = new SalesContract(date,name, email, vehicle, isFinanced);
+
+        ContractFileManager contractFileManager = new ContractFileManager();
+
+        dealership.removeVehicle(vehicle);
+
+    }
+
+    public void processANewLease(){
+        System.out.println("Enter Date: ");
+        String date = scanner.nextLine();
+
+        System.out.println("Enter Customer Name: ");
+        String name = scanner.nextLine();
+
+        System.out.println("Enter Customer Email: ");
+        String email = scanner.nextLine();
+
+        System.out.println("Enter Vehicle Vin: ");
+        int vin = scanner.nextInt();
+
+        Vehicle vehicle = dealership.getVehicleByVin(vin);
+        
+
+        LeaseContract leaseContract = new LeaseContract(date, name, email, vehicle);
+
+        ContractFileManager contractFileManager = new ContractFileManager();
+
+        dealership.removeVehicle(vehicle);
+
+    }
     public void processGetByPriceRequest() {
         System.out.print("Enter minimum price: ");
         double min = scanner.nextDouble();

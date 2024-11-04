@@ -1,14 +1,14 @@
 package com.pluralsight;
 
-public class LeaseContract {
+public class LeaseContract extends Contract{
     private double excpectedEndingValue;
     private double leaseFee;
     private double monthlyPayment;
 
     private double totalPrice;
 
-    public LeaseContract() {
-
+    public LeaseContract(String date, String customerName, String customerEmail, Vehicle vehicleSold) {
+        super(date, customerName, customerEmail, vehicleSold);
     }
 
     public double getExcpectedEndingValue() {
@@ -37,4 +37,10 @@ public class LeaseContract {
 
     }
 
+    @Override
+    public String toString() {
+        return "LEASE|" + getDate() + "|" + getCustomerName() + "|" + getCustomerEmail() + "|" + getVehicleSold().getVin() + "|" + getVehicleSold().getYear() + "|" +
+                getVehicleSold().getMake() + "|" + getVehicleSold().getModel() + "|" + getVehicleSold().getVehicleType() + "|" + getVehicleSold().getColor() + "|" +
+                getVehicleSold().getOdometer() + "|" + getVehicleSold().getPrice() + "|" + excpectedEndingValue + "|" + leaseFee + "|" + totalPrice + "|" + monthlyPayment;
+    }
 }
