@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
@@ -138,7 +139,11 @@ public class UserInterface {
         int vin = scanner.nextInt();
 
         Vehicle vehicle = dealership.getVehicleByVin(vin);
-        
+
+        if ((LocalDate.now().getYear() - vehicle.getYear()) > 3){
+            System.err.println("Cannot Lease a Vehicle older than 3 years!");
+            return;
+        }
 
         LeaseContract leaseContract = new LeaseContract(date, name, email, vehicle);
 
