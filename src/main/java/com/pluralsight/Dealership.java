@@ -119,9 +119,20 @@ public class Dealership {
 
     public void addVehicle(Vehicle vehicle) {
         inventory.add(vehicle);
+
+        updateFile();
     }
 
     public void removeVehicle(Vehicle vehicle) {
         inventory.remove(vehicle);
+
+        updateFile();
+    }
+
+    public void updateFile(){
+
+        DealershipFileManager dealershipFileManager = new DealershipFileManager();
+
+        dealershipFileManager.saveDealership(this);
     }
 }

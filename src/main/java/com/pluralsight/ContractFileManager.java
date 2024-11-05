@@ -12,12 +12,14 @@ public class ContractFileManager {
 
 
         try {
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName));
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName, true));
 
             bufferedWriter.write(contract.toString());
             bufferedWriter.newLine();
 
             System.out.println("Contract saved successfully to " + fileName);
+
+            bufferedWriter.close();
 
 
 

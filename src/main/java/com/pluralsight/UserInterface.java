@@ -99,8 +99,13 @@ public class UserInterface {
 
         System.out.println("Enter Vehicle Vin: ");
         int vin = scanner.nextInt();
+        scanner.nextLine();
 
         Vehicle vehicle = dealership.getVehicleByVin(vin);
+
+        if (vehicle == null){
+            return;
+        }
 
 
         System.out.println("Enter If It is Financed(yes/no): ");
@@ -120,6 +125,8 @@ public class UserInterface {
         SalesContract salesContract = new SalesContract(date,name, email, vehicle, isFinanced);
 
         ContractFileManager contractFileManager = new ContractFileManager();
+
+        contractFileManager.saveContract(salesContract);
 
         dealership.removeVehicle(vehicle);
 
@@ -148,6 +155,8 @@ public class UserInterface {
         LeaseContract leaseContract = new LeaseContract(date, name, email, vehicle);
 
         ContractFileManager contractFileManager = new ContractFileManager();
+
+        contractFileManager.saveContract(leaseContract);
 
         dealership.removeVehicle(vehicle);
 
