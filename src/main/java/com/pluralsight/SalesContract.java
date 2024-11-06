@@ -9,11 +9,13 @@ public class SalesContract extends Contract {
     private double totalPrice;
     private double monthlyPayment;
 
+    //Constructor
     public SalesContract(String date, String customerName, String customerEmail, Vehicle vehicleSold, boolean isFinance) {
         super(date, customerName, customerEmail, vehicleSold);
         this.isFinance = isFinance;
     }
 
+    //Getters and setters
     public double getSalesTax() {
         return salesTax;
     }
@@ -46,31 +48,45 @@ public class SalesContract extends Contract {
         isFinance = finance;
     }
 
+    //Method to get the total price of the vehicle with all the fees and taxes
     @Override
     public double getTotalPrice() {
-        return getVehicleSold().getPrice() + salesTax + recordingFee + processingFee;
+        //Add vehicle price, tax, recordingFee, processing fee and return the total
+        double totalPrice = getVehicleSold().getPrice() + salesTax + recordingFee + processingFee;
+        this.totalPrice = totalPrice;
+        return totalPrice;
     }
 
+    //Method to get the monthly payment of the vehicle including all the taxes and fees
     @Override
     public double getMonthlyPayment() {
         int numberOfPayments = 0;
         double interestRate = 0;
+        double monthlyPayment = 0;
+        //Continue here if the vehicle is financed
         if (isFinance) {
+            //continue here if the vehicle value is greater than and equals to 10000
             if (getVehicleSold().getPrice() >= 10000) {
+                //Set the appropriate variable values in this case
                 numberOfPayments = 48;
                 interestRate = 4.25 / 1200;
             } else {
+                //Set the appropriate variable values in this case
                 numberOfPayments = 24;
                 interestRate = 5.25 / 1200;
             }
 
-            double monthlyPayment = getTotalPrice() * (interestRate * Math.pow(1 + interestRate, numberOfPayments)) / (Math.pow(1 + interestRate, numberOfPayments) - 1);
+            //Find the monthly pay calculating with total price, interestRate, numberofPayments
+            monthlyPayment = getTotalPrice() * (interestRate * Math.pow(1 + interestRate, numberOfPayments)) / (Math.pow(1 + interestRate, numberOfPayments) - 1);
+            //Round the monthly payment
             monthlyPayment = Math.round(monthlyPayment * 100);
             monthlyPayment /= 100;
-            return monthlyPayment;
-        } else {
-            return 0.0;
+
         }
+        //Put the value into the class variable
+        this.monthlyPayment = monthlyPayment;
+        //Return value
+        return monthlyPayment;
     }
 
     @Override
