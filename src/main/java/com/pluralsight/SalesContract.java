@@ -3,8 +3,6 @@ package com.pluralsight;
 public class SalesContract extends Contract {
     private static double salesTax = .05;
     private static double recordingFee = 100;
-//    private double apr;
-//    private int loanTerm;
     private double processingFee;
     private boolean isFinance;
 
@@ -14,22 +12,6 @@ public class SalesContract extends Contract {
     public SalesContract(String date, String customerName, String customerEmail, Vehicle vehicleSold, boolean isFinance) {
         super(date, customerName, customerEmail, vehicleSold);
         this.isFinance = isFinance;
-
-//        if (getVehicleSold().getPrice() < 10000) {
-//            processingFee = 295;
-//        } else {
-//            processingFee = 495;
-//        }
-//
-//        if (isFinance) {
-//            if (getVehicleSold().getPrice() < 10000) {
-//                apr = .0425;
-//                loanTerm = 48;
-//            } else {
-//                apr = .0525;
-//                loanTerm = 24;
-//            }
-//        }
     }
 
     public double getSalesTax() {

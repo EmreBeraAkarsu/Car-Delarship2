@@ -2,14 +2,14 @@
 
 ## Description of the Project
 
-
+This project is advanced version of previously made Car Dealership application. Same as before, this application makes it easier for the dealerships to store their inventory and filter different vehicles within their inventory. Contract creation is the newly added feature for this version of the project.
 
 ## User Stories
 
-List the user stories that guided the development of your application. Format these stories as: "As a [type of user], I want [some goal] so that [some reason]."
-
-- As a user, I want to be able to input my data, so that the application can process it accordingly.
-- As a user, I want to receive immediate feedback, so I can understand what to do next.
+- As a user, I should be able to enter the basic sales information, so the sales information is stored to be viewed later on for analysis
+- As a user, I should be able to add a vehicle information to the contract, so I know which contract is related to what vehicle
+- As a user, I should be able to enter if the contract is a lease or a sale, so I can get the related information to the contract
+- As a user, I should be able to get the calculated pricing, so the amount due and other pricing details or known by me
 
 ## Setup
 
@@ -32,8 +32,16 @@ Follow these steps to get your application running within IntelliJ IDEA:
 
 ## Technologies Used
 
-- Java: Mention the version you are using.
-- Any additional libraries or frameworks used in the project.
+- Java 17
+-  
+- import java.util.ArrayList; 
+- import java.util.List;
+- import java.io.BufferedWriter; 
+- import java.io.FileWriter; 
+- import java.io.IOException;
+- import java.io.*;
+- import java.time.LocalDate; 
+- import java.util.Scanner;
 
 ## Demo
 
@@ -44,28 +52,27 @@ Follow these steps to get your application running within IntelliJ IDEA:
 ![cannot lease an old vehicle.PNG](Imgs%2Fcannot%20lease%20an%20old%20vehicle.PNG)
 
 ![updated files.PNG](Imgs%2Fupdated%20files.PNG)
+
+
 ## Future Work
 
-Outline potential future enhancements or functionalities you might consider adding:
+- Additional feature to be developed: 
+- Create a search and filter functionalities to the contracts.
+- Separate and group contracts depending on the delareship.
+- -----------------------------------------------------------------
 
-- Additional feature to be developed.
-- Improvement of current functionalities.
+- Improvement of current functionalities:
+- Add more details to the contract information
 
 ## Resources
 
-List resources such as tutorials, articles, or documentation that helped you during the project.
-
-- [Java Programming Tutorial](https://www.example.com)
-- [Effective Java](https://www.example.com)
+-No outside resources was used
 
 ## Team Members
 
-- **Name 1** - Specific contributions or roles.
-- **Name 2** - Specific contributions or roles.
+- **Emre Akarsu** - Only member in the team, handled all parts of the project.
+
 
 ## Thanks
 
-Express gratitude towards those who provided help, guidance, or resources:
-
-- Thank you to [Mentor's Name] for continuous support and guidance.
-- A special thanks to all teammates for their dedication and teamwork.
+- Thank you to [Raymond Maroun] for continuous support and guidance.
